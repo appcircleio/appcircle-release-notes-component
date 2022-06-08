@@ -20,18 +20,18 @@ unless release_notes_path.nil? || release_notes_path.empty?
 end
 
 # Release notes generated from the template
-auto_generate = ENV['AC_AUTO_RELEASE_NOTES'] == 'true'
-if auto_generate
+template = ENV['AC_RELEASE_NOTES_TEMPLATE']
+if template.nil? || template.empty?
+  puts "No release notes given. Please provide a release notes file or set the template."
+  exit 0
+else
   puts "Auto-generating release notes..."
-  template = ENV['AC_RELEASE_NOTES_TEMPLATE']
   message = ERB.new(template, trim_mode: "%<>")
   output_dir  = env_has_key('AC_OUTPUT_DIR')
   output_path = File.expand_path(File.join(output_dir, 'release-notes.txt'))
   open(output_path, 'w') { |f|
     f.puts message.result
-  } 
-  exit 0
-else
-  puts "No release notes given. Please provide a release notes file or set AC_AUTO_RELEASE_NOTES to true."
+  }
+  puts "Release notes generated and copied to #{output_path}" 
   exit 0
 end
