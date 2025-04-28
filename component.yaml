@@ -1,7 +1,7 @@
 platform: Common
 buildPlatform:
 displayName: Publish Release Notes
-description: "Publish release notes to stores."
+description: "Publish release notes to the selected distribution modules."
 inputs:
   - key: "AC_RELEASE_NOTES_PATH"
     defaultValue: "$AC_RELEASE_NOTES_PATH"
