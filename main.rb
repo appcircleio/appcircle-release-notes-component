@@ -6,6 +6,8 @@ def env_has_key(key)
   !ENV[key].nil? && ENV[key] != '' ? ENV[key] : abort("Missing #{key}.")
 end
 
+if __FILE__ == $PROGRAM_NAME
+
 release_notes_path = ENV['AC_RELEASE_NOTES_PATH']
 
 # Release notes given by the user
@@ -35,3 +37,5 @@ else
   puts "Release notes generated and copied to #{output_path}" 
   exit 0
 end
+
+end # if __FILE__ == $PROGRAM_NAME

@@ -21,3 +21,12 @@ Build Workflow: $AC_WORKFLOW_NAME
 
 Please check [Ruby documentation](https://docs.ruby-lang.org/en/2.7.0/ERB.html) for the usage of ERB.
 
+## Running tests
+
+Requires the [RSpec](https://rspec.info) gem and the Ruby standard library (Coverage). No Gemfile or Bundler needed.
+
+```bash
+ruby test/test_main.rb
+```
+
+A coverage report is printed at the end of each run. The step is run in subprocesses inside temporary directories, so no file is written outside them.
